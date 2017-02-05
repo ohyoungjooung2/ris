@@ -7,7 +7,8 @@
 #  1) sudo to get root privilegement to install pre-required package for       #
 #     compiling ruby from sources.                                             #
 #  2) Linux distro(Centos, or Ubuntu).                                         #
-#  3) Bash shell                                                               #
+#  3) Bash shell(GNU bash, version 4.1.2(2)-release (x86_64-redhat-linux-gnu)) #
+#  4) Tested under Centos6.8 and Ubuntu server(xenial)-vagrant dev env         #
 #                                                                              #
 #                                                                              #
 #                              Written by Oh Young Jooung (wnapdlf05@gmail.com)#
