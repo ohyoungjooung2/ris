@@ -4,6 +4,8 @@
 
 #Execution dir
 EDIR=`pwd`
+
+#Header for instructions
 . ./head.sh
 
 PSCRIPT="./pre_ruby_install.sh"
