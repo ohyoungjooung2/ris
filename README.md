@@ -1,4 +1,4 @@
-# ris[37m################################################################################
+################################################################################
 #                    Ruby installer for testing many rubies                    #
 #                                                                              #
 #  This Script is for installing rubies(http://www.ruby-lang.org/) from source.#
