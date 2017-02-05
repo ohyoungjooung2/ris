@@ -37,16 +37,10 @@ RUBY_LISTS="ruby_lists.html"
 #Only xz extension version
 
 rm_pre(){
-  #Remove previous ruby lists html files
-  if [[ -e $RUBY_LISTS ]]
-  then
-     echo "Removing downloaded ruby list file"
-     rm -f $RUBY_LISTS
-  fi
 
   #Remove previous ruby compile directory
      echo "Removing previous RUBY SOURCE_DIR"
-     find /tmp -type d | grep -i "ruby-*" | xargs rm -rfv
+     find /tmp -type d | grep -i "^ruby-*" | xargs rm -rfv
      find /tmp -type f | grep -i "ruby-*" | xargs rm -rfv
 
 }
@@ -54,7 +48,7 @@ rm_pre(){
 #Execute rm_pre function
 rm_pre
 
-$CURL -H 'FRESH_CONNECT' $URL -o $RUBY_LISTS
+$CURL $URL -z $RUBY_LISTS -o $RUBY_LISTS --verbose --silent --location
 #Ruby xz,gz,bz2 lists
 #RLCA=( $(cat $RUBY_LISTS | grep "ruby-[0-9]\.[0-9]\.[0-9]\.tar\.[xgb]z" | awk -F["\"","\""] '{print $2}') )
 
