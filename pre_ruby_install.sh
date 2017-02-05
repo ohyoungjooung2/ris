@@ -15,5 +15,6 @@ then
   sudo apt-get -y update
   sudo apt-get -y install xz-utils libc6-dev libgdbm-dev libreadline-dev libmysql++-dev libsqlite3-dev make build-essential libssl-dev libreadline6-dev zlib1g-dev libyaml-dev ruby
   #echo "installing necessary packages"
-  sleep 3
+   . ./check.sh "Pre requirement job"
+  #sleep 3
 fi
