@@ -40,8 +40,8 @@ rm_pre(){
 
   #Remove previous ruby compile directory
      echo "Removing previous RUBY SOURCE_DIR"
-     find /tmp -type d | grep -i "^ruby-*" | xargs rm -rfv
-     find /tmp -type f | grep -i "ruby-*" | xargs rm -rfv
+     find /tmp -type d | grep -i "^ruby-*" | xargs rm -rfv 1> /dev/null
+     find /tmp -type f | grep -i "ruby-*" | xargs rm -rfv 1> /dev/null
 
 }
 
@@ -51,6 +51,11 @@ rm_pre
 $CURL $URL -z $RUBY_LISTS -o $RUBY_LISTS --verbose --silent --location
 #Ruby xz,gz,bz2 lists
 #RLCA=( $(cat $RUBY_LISTS | grep "ruby-[0-9]\.[0-9]\.[0-9]\.tar\.[xgb]z" | awk -F["\"","\""] '{print $2}') )
+
+
+#Sometimes $RUBY_LISTS file is downloaded as gzip file format , maybe because of cached(by varnish cach server)
+#So to change from gzip to html
+. ./change_gzip_to_html.sh $RUBY_LISTS
 
 #Ruby only xz version
 RLCA=( $(cat $RUBY_LISTS | grep "ruby-[0-9]\.[0-9]\.[0-9]\.tar\.xz" | awk -F["\"","\""] '{print $2}') )
