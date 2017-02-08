@@ -5,6 +5,9 @@
 #Execution dir
 EDIR=`pwd`
 
+#Compile dir
+CPD="/tmp"
+
 #Header for instructions
 . ./head.sh
 
@@ -93,22 +96,9 @@ done
 
 
 
-install(){
-  check_ruby_dir
-  ruby_list
-  if [[ $NUMBER != "" ]]
-  then
-   SOURCE_FILE="${RLCA[$NUMBER]}"
-   SOURCE_DIR=$(echo $SOURCE_FILE | awk -F '.tar.xz' '{print $1}')
-   VERSION=$SOURCE_DIR
-   RUBY_URL="$URL${RLCA[$NUMBER]}"
-  else
-   echo "Please input NUMBER"
-   install
-  fi  
-
-
- cd /tmp
+#Configure and compile
+con_com(){
+ cd $CPD;
  wget $RUBY_URL
  #VERSION=$(echo $RUBY_URL | awk -F '/' '{print $7}' | awk -F '.tar.gz' '{print $1}')
  tar xvJf $SOURCE_FILE
@@ -128,9 +118,55 @@ install(){
  exec bash
 }
 
+#In case that $VERSION ALREADY INSTALLED
+check_if_installed(){ 
+if [[ -e $RUBY_DIR/$VERSION ]]
+   then
+     echo -e "\e[31m You seem like already install RUBY $VERSION\e[0m"
+     echo -e "\e[31m Do you want to compile again? Answer(y/Y,n/N)\e[0m"
+     read YN
+     if [[ $YN == "y" || $YN == "Y" ]]
+     then
+        #Just configure,compile and exec bash
+        con_com
+     elif [[ $YN == "n" || $YN == "N" ]]
+     then
+        echo -e "\e[32m You chosed not to install this ruby $VERSION \e[0m"
+        exit 0
+     else
+        check_if_installed
+     fi
+fi
+}
+
+
+ruby_check_success(){
+  CUR_RUBY_VERSION=`ruby -v`
+  echo -e "\e[33m Your current ruby version is $CUR_RUBY_VERSION \e[0m"
+ }
+ 
+
+install(){
+  check_ruby_dir
+  ruby_list
+  if [[ $NUMBER != "" ]]
+  then
+   SOURCE_FILE="${RLCA[$NUMBER]}"
+   SOURCE_DIR=$(echo $SOURCE_FILE | awk -F '.tar.xz' '{print $1}')
+   VERSION=$SOURCE_DIR
+   RUBY_URL="$URL${RLCA[$NUMBER]}"
+   check_if_installed
+  else
+   echo "Please input NUMBER"
+   install
+  fi  
+
+
+  con_com
+  ruby_check_success
+}
+
 
 install
 
 
-ruby_check_success(){
- }
