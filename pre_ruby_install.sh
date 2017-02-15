@@ -13,9 +13,9 @@ then
 elif [[ `cat /proc/version | egrep -i "ubuntu|debian"` != "" ]]
 then
   #sudo apt-get -y update 1> /dev/null
-  sudo apt-get -y update
+  sudo apt-get -y update 1> /dev/null
   #sudo apt-get -y install xz-utils libc6-dev libgdbm-dev libreadline-dev libmysql++-dev libsqlite3-dev make build-essential libssl-dev libreadline6-dev zlib1g-dev libyaml-dev ruby 1> /dev/null
-  sudo apt-get -y install xz-utils libc6-dev libgdbm-dev libreadline-dev libmysql++-dev libsqlite3-dev make build-essential libssl-dev libreadline6-dev zlib1g-dev libyaml-dev ruby
+  sudo apt-get -y install xz-utils libc6-dev libgdbm-dev libreadline-dev libmysql++-dev libsqlite3-dev make build-essential libssl-dev libreadline6-dev zlib1g-dev libyaml-dev ruby 1> /dev/null
   #echo "installing necessary packages"
    . ./check.sh "Pre requirement job"
   #sleep 3
