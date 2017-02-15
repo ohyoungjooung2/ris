@@ -1,13 +1,8 @@
-################################################################################
-#                    Ruby installer for testing many rubies                    #
-#                                                                              #
-#  This Script is for installing rubies(http://www.ruby-lang.org/) from source.#
-#  Requirements                                                                #
-#                                                                              #
-#  1) sudo to get root privilegement to install pre-required package for compiling ruby from sources.                                             #
-#  2) Linux distro(Centos, or Ubuntu).                                         #
-#  3) Bash shell                                                               #
-#                                                                              #
-#                                                                              #
-#                              Written by Oh Young Jooung (wnapdlf05@gmail.com)#
-################################################################################
+Just execute setup. For example "./setup".
+You need sudo privilegement. 
+
+Example in ubuntu servers)
+vagrant@u16:~/ris$ sudo cat /etc/sudoers.d/vagrant
+# CLOUD_IMG: This file was created/modified by the Cloud Image build process
+vagrant ALL=(ALL) NOPASSWD:ALL
+
