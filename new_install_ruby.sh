@@ -82,11 +82,11 @@ echo $CS
 echo -e "$bold\e[33m##### Available .xz extension ruby versions ##### \e[0m"
 for ele in $(seq 0 $((${#RLCA[@]} - 1)) )
 do
-    if [[ `grep $CS ${RLCA[$ele]}`!="" ]]
+    if [[ `echo ${RLCA[$ele]} | sed -r 's/ruby-|.tar.xz//g'` == $CS ]]
     then
        echo -e "\e[31m$ele)\e[0m \t ${RLCA[$ele]} \t Most stable!"
     else
-       echo -e "\e[31m$ele)\e[0m \t ${RLCA[$ele]} \t Most stable!"
+       echo -e "\e[31m$ele)\e[0m \t ${RLCA[$ele]}"
     fi
 done
 
