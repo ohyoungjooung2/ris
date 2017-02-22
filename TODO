@@ -2,4 +2,5 @@
 2. Sucessful message after finishing make install.
 3. Progress bar.
 4. Some questiong between functions.
-5. Display currently stable ruby versions.
+5. Display currently stable ruby versions.(most stable is done)
+6. Using mirror servers!(network check)
