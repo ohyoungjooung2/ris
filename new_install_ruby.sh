@@ -76,10 +76,18 @@ numcheck(){
 }
 
 ruby_list(){
+#Getting most stable version
+. ./stable.sh
+echo $CS
 echo -e "$bold\e[33m##### Available .xz extension ruby versions ##### \e[0m"
 for ele in $(seq 0 $((${#RLCA[@]} - 1)) )
 do
-    echo -e "\e[31m$ele)\e[0m \t ${RLCA[$ele]} "
+    if [[ `grep $CS ${RLCA[$ele]}`!="" ]]
+    then
+       echo -e "\e[31m$ele)\e[0m \t ${RLCA[$ele]} \t Most stable!"
+    else
+       echo -e "\e[31m$ele)\e[0m \t ${RLCA[$ele]} \t Most stable!"
+    fi
 done
 
 
