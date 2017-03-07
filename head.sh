@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#Basically putty default mode
 SIZE=`tput cols`
 if [[ $SIZE -ge 80 ]]
  then

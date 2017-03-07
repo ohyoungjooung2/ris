@@ -34,7 +34,8 @@ check_ruby_dir(){
 
 
 CURL=`which curl`
-URL="https://cache.ruby-lang.org/pub/ruby/"
+#URL="https://cache.ruby-lang.org/pub/ruby/"
+URL="ftp://ftp.kr.freebsd.org/pub/ruby/"
 RUBY_LISTS="ruby_lists.html"
 #WGET_LOG="$RUBY_LISTS.log"
 #Only xz extension version
@@ -61,7 +62,8 @@ $CURL $URL -z $RUBY_LISTS -o $RUBY_LISTS --verbose --silent --location
 . ./change_gzip_to_html.sh $RUBY_LISTS
 
 #Ruby only xz version
-RLCA=( $(cat $RUBY_LISTS | grep "ruby-[0-9]\.[0-9]\.[0-9]\.tar\.xz" | awk -F["\"","\""] '{print $2}') )
+#RLCA=( $(cat $RUBY_LISTS | grep "ruby-[0-9]\.[0-9]\.[0-9]\.tar\.xz" | awk -F["\"","\""] '{print $2}') )
+RLCA=( $(cat $RUBY_LISTS | grep "ruby-[0-9]\.[0-9]\.[0-9]\.tar\.xz" | awk  '{print $9}' | grep -v -i "stable") )
 #echo ${RLCA[*]}
 MAX_RLCA=$((${#RLCA[@]} - 1))
 
@@ -120,7 +122,8 @@ con_com(){
  sleep 1
  cd $EDIR;
  . ./bash_confirm.sh
- echo "export PATH=$RUBY_EACH_HOME/bin:$PATH" >> $HOME/.bashrc
+ #echo "export PATH=$RUBY_EACH_HOME/bin:$PATH" >> $HOME/.bashrc
+ . ./change_bashrc.sh
  ./add_completion.rb $VERSION
  #Entering new shell
  exec bash
