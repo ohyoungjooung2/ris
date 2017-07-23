@@ -8,7 +8,7 @@ ARV=`grep -oG "ruby-[0-9]\.[0-9]\.[0-9]" ~/.bashrc | tail -1`
 #if $ARV is not existing then just add
 if [ -z $ARV ]
 then
- #echo "export PATH=$RUBY_EACH_HOME/bin:$PATH" >> $HOME/.bashrc
+ echo "export PATH=$RUBY_EACH_HOME/bin:$PATH" >> $HOME/.bashrc
  echo "no $ARGV"
 # if $ARV AND $VERSION IS DIFFERENT
 elif [[ "$ARV" != "$VERSION" ]]
