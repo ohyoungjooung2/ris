@@ -12,9 +12,15 @@ then
         exit 1
 fi
 
+if [[ ! $2 ]]
+then
+        echo "input shasum1"
+        exit 1
+fi
 
-
+RSHASUM=$2
 VERSION=$1
+
 PSCRIPT="./pre_ruby_install.sh"
 if [[ ! -x $PSCRIPT ]]
 then
@@ -55,11 +61,11 @@ rm_pre
 if [[ -e ./ruby-$VERSION.tar.xz ]]
 then
         echo "ruby-$VERSION ALREADY EXISTS"
-        echo "5acbdea1ced1e36684268e1cb6f8a4e7669bce77  ruby-$VERSION.tar.xz" | shasum -c
+        echo "$RSHASUM  ruby-$VERSION.tar.xz" | shasum -c
 else
 
         $CURL --remote-name --progress $URL
-        echo "5acbdea1ced1e36684268e1cb6f8a4e7669bce77  ruby-$VERSION.tar.xz" | shasum -c
+        echo "$RSHASUM  ruby-$VERSION.tar.xz" | shasum -c
 fi
 
 
